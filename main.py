@@ -5,11 +5,6 @@ import threading as th
 import messageParsing
 
 
-def key_capture_thread():
-    global keep_going
-    input()
-    keep_going = False
-
 def getCredentials():
     with open("credentials") as file: creds = file.read().splitlines()
     credentials = {
@@ -23,7 +18,6 @@ def getCredentials():
 
 if __name__ == "__main__":
     keep_going = True
-    th.Thread(target=key_capture_thread, args=(), name='key_capture_thread', daemon=True).start()
 
 
     def checkmailLoop(credentials):
